@@ -13,7 +13,6 @@ wget -q --show-progress "$artifactory_url_env/$zip_path"
 echo "Downloaded $artifactory_url_env/$zip_path"
 
 FILE_NAME=${zip_path##*/}
-
 DIR_NAME=$hsm_local_dir_name
 
 has_parent=$(zipinfo -1 "$FILE_NAME" | awk '{split($NF,a,"/");print a[1]}' | sort -u | wc -l)
@@ -33,7 +32,7 @@ else
 fi
 
 echo "Attempting to install"
-cd ./$DIR_NAME && chmod +x install.sh && sudo ./install.sh
+cd ./$DIR_NAME && chmod +x install.sh &&  ./install.sh
 echo "Installation complete"
 cd $work_dir
 
